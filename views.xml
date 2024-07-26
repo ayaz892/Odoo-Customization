@@ -1,0 +1,227 @@
+<odoo>
+    <data>
+        <!-- Tree view -->
+        <record model="ir.ui.view" id="oe_odoo_dev_training_list">
+            <field name="name">oe_odoo_dev_training list</field>
+            <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+            <field name="arch" type="xml">
+                <tree string="OE DEV TRAINING">
+                    <field name="oe_travel_sequence"/>
+                    <field name="student_name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="date_created"/>
+                    <field name="img"/>
+                    <field name="details"/>
+                    <field name="phone_no"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form viw-->
+        <record model="ir.ui.view" id="oe_odoo_dev_training_form">
+            <field name="name">oe_odoo_dev_training form</field>
+            <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+            <field name="arch" type="xml">
+                <form string="OE DEV TRAINING">
+
+                      <header>
+                    <button name="action_confirm" type="object" string="confirm" class="btn-primary"/>
+<!--                            invisible="state not in 'draft'"/>-->
+
+                    <button name="action_done" type="object" string="done" class="btn-success"/>
+                    <button name="action_cancel" type="object" string="cancel" class="btn-danger"/>
+                    <button name="create_rec" type="object" string="create" class="btn-info"/>
+                    <button name="search_rec" type="object" string="search record" class="btn-info"/>
+                    <button name="copy_rec" type="object" string="copy record" class="btn-info"/>
+                    <button name="search_count_rec" type="object" string="search count" class="btn-info"/>
+
+
+
+
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        string="confirm"
+                        statusbar_visible="draft,confirm,done,cancel"
+                        />
+
+
+                </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}"/>
+
+
+
+
+                          <h1>
+                        <h1>
+                            <field name="oe_travel_sequence" class="oe_title"/>
+
+                        </h1>
+
+                    </h1>
+                        <group>
+                            <field name="student_name"/>
+                            <field name="age"/>
+                            <field name="date_created"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="img"/>
+                            <field name="details"/>
+                            <field name="phone_no"/>
+                        </group>
+                        <notebook>
+                            <page string="Training Progress">
+                                <field name="leave_details_id" widget="one2many">
+                                    <tree editable="bottom">
+                                        <field name="course"/>
+                                        <field name="description"/>
+                                        <field name="cr_hr"/>
+                                        <field name="fees"/>
+                                        <field name="course_fee"/>
+
+                                    </tree>
+                                </field>
+                                <div style="text-align: right">
+                                  <strong>Total Fees :</strong> <field name="total_fees"/>
+                                </div>
+                            </page>
+                            <page string="2nd one">
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        Kanban view-->
+        <record id="oe_odoo_dev_training_view_kanban" model="ir.ui.view">
+            <field name="name">Oe Dev Trainee</field>
+            <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+             <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_primary">
+
+                                   <field name="student_name"/>
+                                <div>
+                                    <field name="age"/>
+                                </div>
+                                <div>
+                                    <field name="date_created"/>
+                                </div>
+
+                                 <div>
+                                    <field name="img"/>
+                                </div>
+                                 <div>
+                                    <field name="details"/>
+                                </div>
+                                <div>
+                                    <field name="phone_no"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+
+
+        </record>
+
+<!--        pivot view-->
+        <record id="oe_odoo_dev__training_pivot_view" model="ir.ui.view">
+
+            <field name="name">Oe Dev Trainee</field>
+            <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+            <field name="arch" type="xml">
+                <pivot string="Pivot View">
+                    <field name="student_name" type="col"/>
+                    <field name="age" type="col"/>
+                    <field name="date_created" type="col"/>
+<!--               <field name="img" type="col"/>-->
+<!--               <field name="details" type="col"/>-->
+       </pivot>
+   </field>
+</record>
+
+<!--        graph view-->
+        <record model="ir.ui.view" id="oe_odoo_dev__training_graph_view">
+            <field name="name">Oe Dev Trainee</field>
+   	        <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+   	        <field name="type">graph</field>
+   	        <field name="arch" type="xml">
+                <graph string="Training" type="bar">
+                    <field name="student_name" group="True"/>
+           		    <field name="age" type="measure"/>
+       		</graph>
+   	</field>
+</record>
+
+<!--        calender view-->
+        <record id="oe_odoo_view_calendar" model="ir.ui.view">
+            <field name="name">OE dev trainee</field>
+            <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+            <field name="arch" type="xml">
+                <calendar string="Service Request"
+                          date_start="date_created"
+                          date_stop="date_ended"
+                          event_open_popup="true"
+                          mode="month"
+
+                          quick_add="False">
+                    <field name="student_name"/>
+                    <field name="details"/>
+                    <field name="phone_no"/>
+                </calendar>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="view_search_oe_odoo">
+            <field name="name">Oe Odoo Search View</field>
+   	        <field name="model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+   	        <field name="arch" type="xml">
+                <search>
+                    <field name="student_name"/>
+                    <field name="age"/>
+                </search>
+
+
+   	</field>
+</record>
+
+
+        <!-- Action Definition -->
+        <record model="ir.actions.act_window" id="action_oe_odoo_dev_training">
+            <field name="name">OE DEV TRAINEE</field>
+            <field name="res_model">oe_odoo_dev_training.oe_odoo_dev_training</field>
+            <field name="view_mode">tree,form,kanban,pivot,graph,calendar</field>
+        </record>
+
+        <!-- Menu Items -->
+        <menuitem id="oe_odoo_dev_training_menu" name="OE Dev Training" sequence="1"/>
+        <menuitem id="oe_odoo_dev_training_sub_menu" name="Oe Dev Training" parent="oe_odoo_dev_training_menu" action="action_oe_odoo_dev_training" sequence="1"/>
+
+
+<!--
+    <menuitem name="Menu 1" id="oe_odoo_dev_training.menu_1" parent="oe_odoo_dev_training.menu_root"/>
+    <menuitem name="Menu 2" id="oe_odoo_dev_training.menu_2" parent="oe_odoo_dev_training.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="oe_odoo_dev_training.menu_1_list" parent="oe_odoo_dev_training.menu_1"
+              action="oe_odoo_dev_training.action_window"/>
+    <menuitem name="Server to list" id="oe_odoo_dev_training" parent="oe_odoo_dev_training.menu_2"
+              action="oe_odoo_dev_training.action_server"/>
+-->
+  </data>
+</odoo>
