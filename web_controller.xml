@@ -1,0 +1,77 @@
+<odoo>
+    <template id="oe_odoo_dev_training_page">
+
+        <t t-call="website.layout">
+            <div class="container">
+
+                <h1>Create Record</h1>
+                <form action="/create_progress" method="POST">
+                    <div class="form-group">
+                        <label for="student_name">Student Name</label>
+                        <input type="text" id="student_name" name="student_name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="date_created">Date Creation</label>
+                        <input type="date" id="date_created" name="date_created" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="details">Details</label>
+                        <input type="text" id="details" name="details" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Record</button>
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                </form>
+            </div>
+
+        </t>
+
+    </template>
+
+    <template id="records_page">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Oe Odoo Dev Student Records</h1>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Age</th>
+                            <th>Date of Creation</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="students" t-as="s">
+                            <tr>
+                                <td>
+                                    <t t-esc="s.student_name"/>
+
+                                </td>
+                                <td>
+                                    <t t-esc="s.age"/>
+
+                                </td>
+                                <td>
+                                    <t t-esc="s.date_created"/>
+
+                                </td>
+                                <td>
+                                    <t t-esc="s.details"/>
+
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </t>
+
+
+    </template>
+</odoo>
