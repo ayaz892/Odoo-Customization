@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--The following template used for the Header of the PDF report-->
+
+    <template id="purchase_order_header_footer_external_layout_id">
+        <t t-foreach="docs" t-as="o">
+            <div t-attf-class="header">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-3">
+                                <img
+                                    style="height:120px;width:120px"
+                                    t-if="o.company_id.logo"
+                                    t-att-src="image_data_uri(o.company_id.logo)"
+                                    alt="Logo"
+                                />
+                            </div>
+                            <style>
+                                ul {
+                                list-style: none;
+                                }
+
+                                ul li {
+                                color: black;
+                                font-size:14px
+                                }
+                            </style>
+                            <div class="col-8">
+                                <div class="row" style="padding-left">
+                                    <ul>
+                                        <li style="margin-bottom: 5px;font-size:12px;">
+                                            <strong>
+                                                <t t-esc="o.company_id.name" />
+                                            </strong>
+                                        </li>
+
+                                        <li style="margin-bottom: 5px;font-size:12px;">
+                                            <t t-esc="o.company_id.street" />
+                                        </li>
+                                        <li style="margin-bottom: 5px;font-size:12px;">
+                                            <t t-esc="o.company_id.street2" />
+                                        </li>
+
+                                        <li style="margin-bottom: 5px;font-size:12px;">
+                                            <t t-esc="o.company_id.city" />
+                                            <t t-esc="o.company_id.country_id.name" />
+                                        </li>
+
+                                        <li
+                                            style="margin-bottom: 5px;font-size:12px;"
+                                        >TRN:
+                                            <t t-esc="o.company_id.vat" />
+                                        </li>
+
+                                        <li
+                                            style="margin-bottom: 5px;font-size:12px;"
+                                        >Phone NO:
+                                            <t t-esc="o.company_id.phone" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div style=" height:33px;margin-bottom:2px;" class="row" />
+                        <div class="col-4" style="font-size:12px;">
+                            <b>
+                                <t t-esc="o.partner_id.name" />
+                            </b>
+                        </div>
+                        <br />
+                        <div style="font-size:11px; margin-bottom:4px;" class="row">
+                            <t t-esc="o.partner_id.street" />
+                            <br />
+                            <t t-esc="o.partner_id.street2" />
+                        </div>
+                        <div style="font-size:11px; margin-bottom:4px;" class="row">
+                            <t t-esc="o.partner_id.country_id.name" />
+                        </div>
+                        <div style="font-size:11px; margin-bottom:4px;" class="row">
+                            Phone NO:
+                            <t t-esc="o.partner_id.phone" />
+                        </div>
+                        <div style="font-size:11px; margin-bottom:4px;" class="row">
+                            TRN:
+                            <t t-esc="o.partner_id.vat" />
+                        </div>
+                    </div>
+                    <div style="font-size:11px" class="col-6">
+                        <div style="border-bottom: 1px dashed #3498db;" class="row">
+                            <div class="col-6" />
+                            <div
+                                style="background: url('oe_purchase_order_pdf_report/static/src/img/bg.png'); height: 27px;width: 9px;"
+                                class="col-0"
+                            />
+                            <div style="padding-left:10px;" class="col-6">
+                                <b>
+                                    <h5
+                                        style="font-weight: 800;vertical-align: bottom;display: inline-block:line-height: 1;"
+                                    >
+                                        <strong>PURCHASE ORDER</strong>
+                                    </h5>
+                                </b>
+                            </div>
+                        </div>
+                        <br />
+                        <div style="height:20px; color:Gray;" class="row">
+                            <div class="col-3">Document Number</div>
+                            <div class="col-3">Rev Number</div>
+                            <div class="col-3">Document Date</div>
+                            <div align="center" class="col-3">Page</div>
+                        </div>
+
+                        <br />
+                        <strong>
+                            <div
+                                style="border-bottom: 1px dashed #3498db; height:20px;"
+                                class="row"
+                            >
+                                <div class="col-3">
+                                    <t t-esc="o.name" />
+                                </div>
+                                <div class="col-3">
+                                    <t t-esc="o.version" />
+                                </div>
+                                <div class="col-3">
+                                    <span
+                                        t-esc="o.date_order and o.date_order.strftime('%d.%m.%Y')"
+                                    />
+                                </div>
+                                <div align="center" class="col-3">
+                                    <ul class="list-inline">
+                                        <span class="page" />/
+                                        <span class="topage" />
+                                    </ul>
+                                </div>
+                            </div>
+                        </strong>
+                        <br />
+
+                        <div style="height:20px; color:Gray;" class="row">
+                            <div class="col-6">Supplier No.</div>
+                            <div class="col-6">VAT Number - Business Partner</div>
+                        </div>
+
+                        <br />
+                        <strong>
+                            <div
+                                style="border-bottom: 1px dashed #3498db;height:20px;"
+                                class="row"
+                            >
+                                <div class="col-6">
+                                    <t t-esc="o.partner_id.sequence_number" />
+                                </div>
+                                <div class="col-6">
+                                    <t t-esc="o.partner_id.vat" />
+                                </div>
+                            </div>
+                        </strong>
+                        <br />
+
+                        <div style="height:20px; color:Gray;" class="row">
+                            <div class="col-6">Supplier Reference</div>
+                        </div>
+
+                        <br />
+                        <strong>
+                            <div
+                                style="border-bottom: 1px dashed #3498db;height:20px;"
+                                class="row"
+                            >
+                                <div class="col-6">
+                                    <t t-esc="o.partner_ref" />
+                                </div>
+                            </div>
+                        </strong>
+                        <br />
+
+                        <div style="height:20px; color:Gray;" class="row">
+                            <div class="col-6">Your Contact</div>
+                            <div class="col-6" />
+                        </div>
+                        <br />
+                        <strong>
+                            <div
+                                style="border-bottom: 1px dashed #3498db;height:20px;"
+                                class="row"
+                            >
+                                <div class="col-6">
+                                    <t t-esc="o.user_id.name" />
+                                </div>
+                                <div class="col-6" />
+                            </div>
+                        </strong>
+                        <br />
+                        <div style="height:20px; color:Gray;" class="row">
+                            <div class="col-6">Delivery Address</div>
+                            <div class="col-6" />
+                        </div>
+                        <br />
+                        <div style="height:20px;" class="row">
+                            <div class="col-8">
+                                <span style="padding-bottom:10px;">
+                                    <strong>
+                                        <t t-esc="o.company_id.name" />
+                                    </strong>
+                                </span>
+                                <br />
+                                <span style="padding-bottom:10px;">
+                                    <t t-esc="o.company_id.street" />
+                                </span>
+                                <br />
+                                <span style="padding-bottom:10px;">
+                                    <t t-esc="o.company_id.street2" />
+                                </span>
+                            </div>
+                            <div class="col-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--The following template used for the Internal body and Footer of the PDF report-->
+
+    <template id="purchase_order_template_id">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.html_container">
+                <t
+                    t-call="oe_purchase_order_pdf_report.purchase_order_header_footer_external_layout_id"
+                />
+                <t t-call="web.internal_layout">
+                    <div class="row">
+                        <div style="height:20px" class="col-12" />
+                    </div>
+                    <div class="row">
+                        <div
+                            style="height:10px; border-top: 1px dashed #3498db;"
+                            class="col-12"
+                        />
+                    </div>
+                    <div class="row" style="font-size:11px;">
+                        <div class="col-12" style="color:Gray;">
+                            Contacts:
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" style="font-size:11px;">
+                        <div class="col-2">
+                            <strong>For Commercial:</strong>
+                        </div>
+                        <div class="col-2">
+                            <t t-esc="o.company_id.commercial" />
+                        </div>
+                        <div class="col-2">
+                            <strong>For Technical:</strong>
+                        </div>
+                        <div class="col-2">
+                            <t t-esc="o.company_id.technical" />
+                        </div>
+                        <div class="col-2">
+                            <strong>For Delivery:</strong>
+                        </div>
+                        <div class="col-2">
+                            <t t-esc="o.company_id.delivery" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="height:10px" class="col-12" />
+                    </div>
+                    <div class="row">
+                        <div
+                            style="height:25px; border-top: 1px dashed #3498db;"
+                            class="col-12"
+                        />
+                    </div>
+                    <div class="row" style="font-size:10px;">
+                        <div class="col-2">
+                            Delivery Date:
+                        </div>
+                        <div class="col-8">
+                            <strong><t
+                                    t-esc="o.picking_ids.date_done.strftime('%d.%m.%Y')"
+                                /></strong>
+                        </div>
+                        <div align="right" class="col-2" style="font-size:10px;">
+                            <h9 style="color:Gray;">Currency:</h9>
+                            <strong>
+                                <t t-esc="o.currency_id.name" />
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-borderless" style="width: 100%;">
+                                <thead
+                                    style="font-size:11px; border-bottom: 1px solid #3498db; background-color: #F0F8FF;"
+                                >
+                                    <tr height="25px">
+                                        <td
+                                            class="text-start"
+                                            width="10%"
+                                            style="vertical-align: bottom"
+                                        >
+                                            <span>Item Code</span>
+                                            <br />
+                                        </td>
+                                        <td
+                                            class="text-center"
+                                            width="15%"
+                                            style="vertical-align: bottom"
+                                        >
+                                            <span>Description</span>
+                                        </td>
+                                        <td
+                                            class="text-center"
+                                            width="10%"
+                                            style="vertical-align: bottom"
+                                        >
+                                            <span>Quantity</span>
+                                        </td>
+                                        <td
+                                            class="text-center"
+                                            width="15%"
+                                            style="vertical-align: bottom"
+                                        >
+                                            <span>UOM</span>
+                                        </td>
+                                        <td
+                                            class="text-start"
+                                            width="10%"
+                                            style="vertical-align: bottom"
+                                        >
+                                            <span>Price</span>
+                                        </td>
+                                        <td
+                                            class="text-start"
+                                            width="10%"
+                                            style="vertical-align: bottom"
+                                        >
+                                            <span>Tax</span>
+                                        </td>
+                                        <td
+                                            style="padding-right:5px;vertical-align: bottom"
+                                            class="text-center"
+                                            width="10%"
+                                        >
+                                            <span>Tax Amt</span>
+                                        </td>
+                                        <td
+                                            style="padding-right:5px;vertical-align: bottom"
+                                            class="text-end"
+                                            width="10%"
+                                        >
+                                            <span>Total</span>
+                                        </td>
+                                    </tr>
+
+
+                                </thead>
+                                <!--                                <t t-set="amount_total" t-value="0"/>-->
+                                <t t-foreach="o.order_line" t-as="line">
+                                    <!--                                    <t-->
+                                    <!--                                            t-set="amount_total"-->
+                                    <!--                                            t-value="amount_total + line.price_subtotal"-->
+                                    <!--                                    />-->
+
+                                    <tbody
+                                        class="col-12"
+                                        style="border-bottom: 1px solid #3498db;"
+                                    >
+                                        <tr style="font-size:11px;padding-top:10px">
+                                            <td align="left" width="10%">
+                                                <span>
+                                                    <t
+                                                        t-esc="line.product_id.default_code"
+                                                    />
+                                                </span>
+                                            </td>
+                                            <td
+                                                class="text-center"
+                                                width="15%"
+                                                style="padding-top:5px; padding-bottom:3px;"
+                                            >
+                                                <t t-esc="line.product_id.name" />
+                                            </td>
+                                            <td
+                                                class="text-center"
+                                                width="10%"
+                                                style="padding-top:5px;padding-bottom:3px;"
+                                            >
+                                                <span>
+                                                    <t
+                                                        t-esc="line.product_qty"
+                                                        style="padding-top:5px;padding-bottom:3px;"
+                                                    />
+                                                </span>
+                                            </td>
+                                            <td
+                                                class="text-center"
+                                                width="10%"
+                                                style="padding-top:5px; padding-bottom:3px;"
+                                            >
+                                                <t t-esc="line.product_uom.name" />
+                                            </td>
+                                            <td
+                                                style="padding-right:5px;padding-top:5px;padding-bottom:3px;"
+                                                class="text-start"
+                                                width="10%"
+                                            >
+                                                <span class="text-nowrap">
+                                                    <span>
+                                                        <t
+                                                            t-esc="'{:,.2f}'.format(line.price_unit)"
+                                                        />
+                                                    </span>
+                                                </span>
+                                            </td>
+                                            <td
+                                                style="padding-right:5px;padding-top:5px;padding-bottom:3px;"
+                                                class="text-start"
+                                                width="10%"
+                                            >
+                                                <span class="text-nowrap">
+                                                    <span>
+                                                        <t t-esc="line.taxes_id.name" />
+                                                    </span>
+                                                </span>
+                                            </td>
+                                            <td
+                                                style="padding-right:5px;padding-top:5px;padding-bottom:3px;"
+                                                class="text-center"
+                                                width="10%"
+                                            >
+                                                <span class="text-nowrap">
+                                                    <span>
+                                                        <span
+                                                            t-esc="'{:,.2f}'.format(line.price_total - line.price_subtotal) or '0.00'"
+                                                        />
+
+                                                    </span>
+                                                </span>
+                                            </td>
+                                            <td
+                                                style="padding-right:5px;padding-top:5px;padding-bottom:3px;"
+                                                class="text-end"
+                                                width="10%"
+                                            >
+                                                <span class="text-nowrap">
+                                                    <span>
+                                                        <t
+                                                            t-esc="'{:,.2f}'.format(line.price_subtotal)"
+                                                        />
+                                                    </span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                style="padding-right:5px;vertical-align: bottom; color:Gray; font-size:10px;"
+                                                class="text-start"
+                                                width="10%"
+                                            >
+                                                <span>Delivery Date</span>
+                                            </td>
+                                            <td
+                                                style="padding-right:5px;vertical-align: bottom;font-size:10px;"
+                                                class="text-center"
+                                                width="15%"
+                                            >
+                                                <span>
+                                                    <t
+                                                        t-esc="o.picking_ids.date_done.strftime('%d.%m.%Y')"
+                                                    />
+                                                </span>
+                                            </td>
+                                            <td
+                                                colspan="6"
+                                                style="padding-right:5px;vertical-align: bottom;font-size:11px;"
+                                                class="text-start"
+                                                width="10%"
+                                            >
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </t>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div
+                            style="border-bottom: 3px solid #3498db; height:6px"
+                            class="col-12"
+                        />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div style="font-size:10px; color:black;" class="row">
+                        <div
+                            style="background: url('oe_purchase_order_pdf_report/static/src/img/bg.png'); height: 20px;width: 3px;"
+                            class="col-1"
+                        />
+                        <div
+                            width="97%"
+                            style="padding-left:10px;"
+                            align="left"
+                            class="col-4"
+                        >
+                            <strong>Additional Expenses:</strong>
+                        </div>
+                        <div class="col-2" align="right">
+                            Mode of Shipment:
+                        </div>
+                        <div class="col-1" align="right">
+                            <strong><t t-esc="o.mode_id.name" /></strong>
+                        </div>
+
+                        <div class="col-1" />
+                        <div width="100%" align="left" class="col-2">
+                            Order Subtotal:
+                        </div>
+                        <div align="right" style="padding-left:10px;" class="col-1">
+                            <strong>
+                                <t t-esc="o.currency_id.name" />
+                            </strong>
+                        </div>
+                        <div align="center" class="col-1">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(o.amount_untaxed)" />
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-7" style="border-bottom: 3px solid #3498db;" />
+                        <div class="col-1" />
+                        <div style="border-bottom: 1px dashed #3498db;" class="col-4" />
+                    </div>
+                    <div style="font-size:10px; color:black;" class="row">
+                        <div
+                            style="background: url('oe_purchase_order_pdf_report/static/src/img/bg.png'); height: 20px;width: 3px;"
+                            class="col-1"
+                        />
+                        <div
+                            width="97%"
+                            style="padding-left:10px;"
+                            align="left"
+                            class="col-4"
+                        >
+                            <strong>Payment Terms:</strong>
+                        </div>
+                        <div class="col-1" />
+                        <div align="right" class="col-2">
+                            <t t-esc="o.payment_term_id.name" />
+                        </div>
+                        <div class="col-1" />
+                        <div width="100%" align="left" class="col-2">
+                            Total Before Tax:
+                        </div>
+                        <div align="right" style="padding-left:10px;" class="col-1">
+                            <strong>
+                                <t t-esc="o.currency_id.name" />
+                            </strong>
+                        </div>
+                        <div align="center" class="col-1">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(o.amount_untaxed)" />
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-7" style="border-bottom: 3px solid #3498db;" />
+                        <div class="col-1" />
+                        <div style="border-bottom: 1px dashed #3498db;" class="col-4" />
+                    </div>
+                    <div style="font-size:10px; color:black;" class="row">
+                        <div
+                            style="background: url('oe_purchase_order_pdf_report/static/src/img/bg.png'); height: 20px;width: 3px;"
+                            class="col-1"
+                        />
+                        <div
+                            width="97%"
+                            style="padding-left:10px;"
+                            align="left"
+                            class="col-4"
+                        >
+                            <strong>Payment Method:</strong>
+                        </div>
+                        <div class="col-1" />
+                        <div align="right" class="col-2">
+                            <t t-esc="o.method_payment.name" />
+                        </div>
+                        <div class="col-1" />
+                        <div width="100%" align="left" class="col-2">
+                            Total Tax Amount:
+                        </div>
+                        <div align="right" style="padding-left:10px;" class="col-1">
+                            <strong>
+                                <t t-esc="o.currency_id.name" />
+                            </strong>
+                        </div>
+                        <div align="center" class="col-1">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(o.amount_tax)" />
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-7" style="border-bottom: 3px solid #3498db;" />
+                        <div class="col-1" />
+                        <div style="border-bottom: 1px dashed #3498db;" class="col-4" />
+                    </div>
+                    <div style="font-size:10px; color:black;" class="row">
+                        <div
+                            style="background: url('oe_purchase_order_pdf_report/static/src/img/bg.png'); height: 20px;width: 3px;"
+                            class="col-1"
+                        />
+                        <div
+                            width="97%"
+                            style="padding-left:10px;"
+                            align="left"
+                            class="col-4"
+                        >
+                            <strong>Delivery Terms:</strong>
+                        </div>
+                        <div class="col-1" />
+                        <div align="right" class="col-2">
+                            <t t-esc="o.deliver_term" />
+                        </div>
+                        <div class="col-1" />
+                        <div
+                            style="background: url('oe_purchase_order_pdf_report/static/src/img/bg.png'); height: 20px;width: 3px;"
+                            class="col-1"
+                        />
+                        <div
+                            width="100%"
+                            style="padding-left:5px;font-size:14px"
+                            align="left"
+                            class="col-2"
+                        >
+                            <strong>Total Amount:</strong>
+                        </div>
+                        <div align="right" class="col-1" style="font-size:12px;">
+                            <strong>
+                                <t t-esc="o.currency_id.name" />
+                            </strong>
+                        </div>
+                        <div align="center" class="col-1" style="font-size:12px;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(o.amount_total)" />
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-7" style="border-bottom: 3px solid #3498db;" />
+                        <div class="col-1" />
+                        <div style="border-bottom: 3px solid #3498db;" class="col-4" />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div style="font-size:10px;" class="row">
+                        <div class="col-11" style="background-color: #F0F8FF;">
+                            <span>
+                                <t t-esc="o.product_note" />
+                            </span>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="row" style="font-size:11px;">
+                        <div class="col-3">
+                            <strong>General Conditions Of Purchase</strong>
+                        </div>
+                        <div class="col-4" />
+                        <div align="right" class="col-5" style="font-size:10px;">
+                            <strong>
+                                <t t-esc="o.company_id.name" />
+                            </strong>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" style="font-size:11px;">
+                        <div class="col-8">
+                            <span>
+                                <t t-esc="o.notes" />
+
+                            </span>
+                        </div>
+                        <div class="col-4" />
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row" style="font-size:11px;">
+                        <div class="col-6" />
+                        <div class="col-3" />
+                        <div class="col-1" style="padding-right:20px;">
+                            <span>
+                                <strong>Signature</strong>
+                            </span>
+                        </div>
+                        <div align="center" class="col-2">
+                            <p
+                                style="border-bottom: 2px solid #3498db; height:6px; padding-top: 11px;"
+                            ><br/>
+                                <span style="padding-top:12px;">
+                                <t t-esc="o.company_id.manager.name"/>
+                               </span>
+                            </p><br/>
+                            <p style="margin-top: 3px; padding-left:15px; padding-bottom:10px;font-size:12px;">
+                            <strong>Supply Chain Manager</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
