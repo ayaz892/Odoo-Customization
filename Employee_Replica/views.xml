@@ -1,0 +1,195 @@
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">employee Form</field>
+            <field name="model">custom_employees.custom_employees</field>
+            <field name="arch" type="xml">
+                <form string="EmployeeForm">
+
+                    <sheet>
+                        <div name="button_box" class="oe_button_box" position="inside">
+                            <button class="oe_stat_button"
+                                    type="object"
+                                    icon="fa-file-text-o"
+                                    name="action_view_documents"
+                                    string="Documents"
+                                    style="background-color: transparent; border: none; color: purple;"/>
+                            <button class="oe_stat_button"
+                                    type="object"
+                                    icon="fa-address-book-o"
+                                    name="action_view_contacts"
+                                    string="Contacts"
+                                    style="background-color: transparent; border: none; color: purple;"/>
+                            <button class="oe_stat_button"
+                                    type="object"
+                                    icon="fa-money"
+                                    name="action_view_loans"
+                                    string="Loans"
+                                    style="background-color: transparent; border: none; color: purple;"/>
+                            <button class="oe_stat_button"
+                                    type="object"
+                                    icon="fa-cubes"
+                                    name="action_view_loans"
+                                    string="Equipment Count"
+                                    style="background-color: transparent; border: none; color: purple;"/>
+                        </div>
+
+                        <div class="row justify-content-between position-relative w-100 m-0 mb-2">
+                            <div class="oe_title mw-75 ps-0 pe-2">
+                                <h1 class="d-flex flex-row align-items-center">
+                                    <field name="name" placeholder="Employee's Name" required="True"
+                                           style="font-size: min(4vw, 2.6rem);"/>
+                                </h1>
+                                <h2>
+                                    <field name="position" placeholder="Job Position"/>
+                                </h2>
+                                <field name="tags" placeholder="Tags"/>
+                            </div>
+                            <div>
+                                <field name="img" widget='image' class="oe_avatar m-0" options='{"zoom": true}'/>
+                            </div>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="work_mobile" widget="phone"/>
+                                <field name="work_phone" widget="phone"/>
+                                <field name="work_email" widget="email"/>
+                            </group>
+                            <group>
+                                <field name="department"/>
+                                <field name="jobposition"/>
+                                <field name="manager"/>
+                                <field name="coach"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="company"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Resume">
+
+                            </page>
+                            <page string="Work Information">
+
+                            </page>
+                            <page string="Private Information">
+
+                            </page>
+                            <page string="HR Setting">
+                                <group>
+                                    <group>
+                                        <field name="employee_type"/>
+                                        <field name="related_user"/>
+                                    </group>
+                                    <group>
+                                        <field name="pin_code"/>
+                                        <field name="badge_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- List View -->
+        <record model="ir.ui.view" id="custom_employees_list">
+            <field name="name">custom_employees list</field>
+            <field name="model">custom_employees.custom_employees</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <!-- Add more fields here as needed -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="custom_employee_view_kanban" model="ir.ui.view">
+            <field name="name">Employee Kanban View</field>
+            <field name="model">custom_employees.custom_employees</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <!-- Image covering the full width -->
+                                <field name="img" widget="image"/>
+                            </div>
+                            <!-- Content below the image -->
+                            <div>
+                                <div>
+                                    <field name="name"/>
+                                </div>
+                                <div>
+                                    <field name="jobposition"/>
+                                </div>
+                                <div>
+                                    <field name="work_email"/>
+                                </div>
+                                <div>
+                                    <field name="work_phone"/>
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <field name="tags"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action Window -->
+        <record model="ir.actions.act_window" id="custom_employees_action_window">
+            <field name="name">Custom Employees Window</field>
+            <field name="res_model">custom_employees.custom_employees</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_custom_emp_root" name="Employees" sequence="1"/>
+        <menuitem id="menu_emp_one" name="Employees" parent="menu_custom_emp_root"/>
+        <menuitem id="sub_menu_emp_one" name="Employees" parent="menu_emp_one"
+                  action="custom_employees_action_window"/>
+        <menuitem id="menu_emp_two" name="Departments" parent="menu_custom_emp_root"/>
+        <menuitem id="menu_emp_three" name="Reporting" parent="menu_custom_emp_root"/>
+
+        <menuitem id="menu_emp_four" name="Configuration" parent="menu_custom_emp_root"/>
+        <menuitem id="sub_menu_setting" name="Settings" parent="menu_emp_four" sequence="1"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_employee" name="Employee" parent="menu_emp_four"
+                  action=""/>
+        <menuitem id="sub_menu_depart" name="Departments" parent="sub_menu_employee"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_locate" name="Work Locations" parent="sub_menu_employee"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_schedule" name="Working Schedules" parent="sub_menu_employee"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_reason" name="Departure Reasons" parent="sub_menu_employee"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_skill" name="Skill Types" parent="sub_menu_employee"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_tags" name="Tags" parent="sub_menu_employee"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_resume" name="Resume" parent="menu_emp_four"
+                  action=""/>
+        <menuitem id="sub_menu_line" name="Line Types" parent="sub_menu_resume"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_recruitment" name="Recruitment" parent="menu_emp_four"
+                  action=""/>
+        <menuitem id="sub_menu_job" name="Job Positions" parent="sub_menu_recruitment"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_types" name="Employment Types" parent="sub_menu_recruitment"
+                  action="custom_employees_action_window"/>
+        <menuitem id="sub_menu_activity" name="Activity Planning" parent="menu_emp_four"
+                  action=""/>
+        <menuitem id="sub_menu_boarding" name="On/Offboarding Plans" parent="sub_menu_activity"
+                  action=""/>
+    </data>
+</odoo>
