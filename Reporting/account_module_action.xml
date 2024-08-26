@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <!-- Report Action -->
+        <record id="action_report_custom_reporting" model="ir.actions.report">
+            <field name="name">My Custom Account Report</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">custom_reporting.report_account_module_pdf</field>
+            <field name="report_file">custom_reporting.report_account_module_pdf</field>
+            <field name="print_report_name">'My Account Report - ' + object.partner_id.name</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
