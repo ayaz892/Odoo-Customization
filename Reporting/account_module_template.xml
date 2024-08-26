@@ -1,0 +1,52 @@
+<odoo>
+    <template id="report_account_module_pdf">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="doc">
+                    <h2>Account Module Report</h2>
+
+
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Invoice Date</th>
+                                <th>Payment Term</th>
+                                <th>Delivery Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="doc">
+                                <tr>
+                                    <td>
+                                        <t t-esc="doc.partner_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.invoice_date"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.invoice_payment_term_id"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.delivery_date"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!--                    <p>-->
+                    <!--                        <strong>Invoice Date:</strong>-->
+                    <!--                        <t t-esc="doc.invoice_date"/>-->
+                    <!--                    </p>-->
+
+                    <!--                    <p>-->
+                    <!--                        <strong>Partner Name:</strong>-->
+                    <!--                        <t t-esc="doc.partner_id.name"/>-->
+                    <!--                    </p>-->
+
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>
