@@ -1,0 +1,52 @@
+Manual Reordering Rules | Odoo Inventory
+
+
+**Introduction:**
+- Ariel, who works at Stealthy Wood, is tired of manually managing stock counts and replenishments.
+- Odoo's inventory management software, specifically the manual reordering rules, can automate much of this work.
+
+**Benefits of Odoo’s Manual Reordering Rules:**
+- **Notifications:** Set up alerts when stock reaches a low level to ensure products are always available.
+- **Avoid Overstocking:** Set a maximum stock limit to prevent over-ordering.
+- **Sync with Vendor Lead Times:** Odoo can automatically sync with vendor lead times to ensure timely deliveries.
+
+**Setting Up Reordering Rules in Odoo:**
+1. **Access the Inventory App:**
+   - Go to the Inventory app and select "Products" to view the product list.
+   - Choose the product you want to set a reordering rule for (e.g., Conference Chair).
+
+2. **Configure the Purchase Tab:**
+   - Ensure at least one vendor is listed in the Purchase tab. The top vendor becomes the default for purchase orders.
+
+3. **Set Reordering Rules:**
+   - Click on the "Reordering Rules" button (with a cycle icon) on the product form.
+   - Set the minimum and maximum quantities. For example, a minimum of 5 and a maximum of 20 means Odoo will replenish stock up to 20 units when it falls below 5.
+
+4. **Triggering the Reordering Rule:**
+   - Check the Trigger field in the additional options menu.
+   - Choose between "Auto" (automatic RFQ generation without notifications) or "Manual" (provides more control and flexibility).
+
+**Using the Replenishment Dashboard:**
+- **Accessing the Dashboard:** 
+  - Go to the Inventory app, then navigate to Operations > Replenishment.
+  - The dashboard shows products with forecasted quantities below their minimum reordering level.
+
+- **Placing Orders:**
+   - The “To Order” amount is the difference between the maximum quantity and the forecasted quantity.
+   - Click "Order Once" to generate a purchase order for the needed amount.
+  
+- **Using the “Order to Max” Button:**
+   - Removes the "To Reorder" filter to show inactive reordering rules.
+   - Click “Order to Max” to place a purchase order for the difference between the current stock and the maximum quantity. For example, if 50 units are forecasted and the maximum is 90, the order will be for 40 units.
+
+**Final Steps:**
+- **Review and Confirm Orders:**
+   - After generating a purchase order, review it in the Purchase app.
+   - Confirm the order to ensure timely delivery based on the vendor’s lead time.
+
+**Conclusion:**
+- Using Odoo’s manual reordering rules helps keep your warehouse stocked efficiently.
+- The “Order to Max” button offers a quick way to replenish stock based on expected demand.
+
+**Wrap-up:**
+- With these tools, managing inventory becomes much easier, saving time and effort.
