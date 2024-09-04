@@ -6,6 +6,8 @@ https://demo.odoo.com/
 
 https://www.odoo.com/es_ES/slides/formacion-tecnica-58
 
+https://youtu.be/oWTuv6XS-pE?si=maQhJgWFaX6r2NZS (for edit existing pdf)
+
 
 _____________________________
 
