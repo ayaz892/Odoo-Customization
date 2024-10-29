@@ -1,1 +1,5 @@
-Common Error
+Replica of Existing Report
+___________________________
+When create replica of any report. Must provide for-each loop with "doc" and object "o" after template id
+
+
