@@ -1,1 +1,86 @@
 
+Accounting Formulas
+
+1. Gross Profit = Sales - Cost of Goods Sold
+
+2. Gross Profit Margin = (Gross Profit / Sales) x 100
+
+3. Operating Profit = Gross Profit - Operating Expenses
+
+4. Operating Profit Margin = (Operating Profit / Sales) x 100
+
+5. Net Profit = Operating Profit - Taxes and Interest
+
+6. Net Profit Margin = (Net Profit / Sales) x 100
+
+7. Return on Investment (ROI) = (Gain / Cost) x 100
+
+8. Return on Equity (ROE) = (Net Profit / Shareholder Equity) x 100
+
+9. Asset Turnover = Sales / Total Assets
+
+10. Inventory Turnover = Cost of Goods Sold / Average Inventory
+
+11. Days Sales Outstanding (DSO) = Accounts Receivable / Sales x Number of Days
+
+12. Days Inventory Outstanding (DIO) = Inventory / Cost of Goods Sold x Number of Days
+
+13. Current Ratio = Current Assets / Current Liabilities
+
+14. Quick Ratio = (Current Assets - Inventory) / Current Liabilities
+
+15. Debt-to-Equity Ratio = Total Debt / Shareholder Equity
+
+16. Earnings Per Share (EPS) = Net Profit / Number of Shares
+
+17. Price-Earnings Ratio (P/E Ratio) = Stock Price / EPS
+
+18. Break-Even Point (BEP) = Fixed Costs / (Selling Price - Variable Costs)
+
+19. Margin of Safety = (Sales - BEP) / Sales
+
+20. Cost of Goods Sold (COGS) = Direct Materials + Direct Labor + Overheads
+
+21. Operating Leverage = (Operating Profit / Sales) x (Sales / Fixed Costs)
+
+22. Financial Leverage = (Net Profit / Operating Profit) x (Operating Profit / Sales)
+
+23. Return on Assets (ROA) = Net Profit / Total Assets
+
+24. Return on Capital Employed (ROCE) = EBIT / (Total Assets - Current Liabilities)
+
+25. Residual Income (RI) = Net Profit - (Total Assets x Cost of Capital)
+
+26. Economic Value Added (EVA) = Net Profit - (Total Assets x Cost of Capital)
+
+27. Cash Conversion Cycle = DIO + DSO - Days Payable Outstanding (DPO)
+
+28. Asset Utilization = Sales / Total Assets
+
+29. Profitability Index (PI) = Present Value of Future Cash Flows / Initial Investment
+
+30. Accounting Rate of Return (ARR) = Average Annual Profit / Average Investment
+
+31. Payback Period = Initial Investment / Annual Cash Inflows
+
+32. Discounted Payback Period = Initial Investment / Discounted Cash Inflows
+
+33. Net Present Value (NPV) = Present Value of Future Cash Flows - Initial Investment
+
+34. Internal Rate of Return (IRR) = Discount Rate that sets NPV to zero
+
+35. Cost of Capital = Weighted Average of Debt and Equity Costs
+
+36. Weighted Average Cost of Capital (WACC) = (Cost of Debt x Debt) + (Cost of Equity x Equity)
+
+37. Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA) = Net Profit + Interest + Taxes + Depreciation + Amortization
+
+38. Interest Coverage Ratio = EBIT / Interest Expenses
+
+39. Times Interest Earned (TIE) = EBIT / Interest Expenses
+
+40. Cash Flow Margin = (Operating Cash Flow / Sales) x 100
+
+41. Cash Flow Return on Investment (CFROI) = Operating Cash Flow / Total Assets
+
+42. Free Cash Flow (FCF) = Operating Cash Flow - Capital Expenditures
