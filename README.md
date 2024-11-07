@@ -1,4 +1,4 @@
-This repo contain cusomization code of odoo ERP Module
+This repo contain cusomization code of ODOO ERP 
 ____________________
 Useful LInks:
 
