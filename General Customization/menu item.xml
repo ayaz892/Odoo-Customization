@@ -1,0 +1,23 @@
+ <menuitem id="parent_menu" name="Investment Management" groups="" sequence="1"
+              web_icon="model_name,static/description/module_icon.png"/>
+
+    <menuitem id="purchase_menu_molding" name="Purchase" parent="parent_menu"
+              groups="" action="" sequence="1"/>
+    <menuitem id="sale_menu_molding" name="Sale" parent="parent_menu"
+              action="custom_action_quotations_with_onboarding"
+              groups="" sequence="2"/>
+
+
+    <menuitem id="sellable" name="Shares" parent="parent_menu"
+              action="custom_product_normal_action_sell"
+              groups="" sequence="3"/>
+    <menuitem id="investoperation" name=" Operation" parent="parent_menu"
+              groups="group_investment_company_user" sequence="4"/>
+    <menuitem id="resgister" name="Investment Register" parent="parent_menu"
+              groups="group_specified for access" sequence="4"/>
+
+<menuitem name="Stock Split" id="" parent="investoperation"
+              action="stock_split_act_window" groups="" sequence="1"/>
+
+    <menuitem name="Dividend" id="" parent="investoperation"
+              action="dividend_share_act_window" groups="" sequence="2"/>
