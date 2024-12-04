@@ -3,3 +3,7 @@ ___________________________
 When create replica of any report. Must provide for-each loop with "doc" and object "o" after template id
 
 
+OWL ERROR After Restoring DB on Local
+_________________________________________
+Sometime after restore db to localhost: It showing different OWL related error while opening or updating modules.
+Solution: First go to odoo Apps and Search Base Module and Update it. After updating base module again update the module in which you are getting error it will now update correctly.
