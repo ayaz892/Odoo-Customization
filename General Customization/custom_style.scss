@@ -1,0 +1,23 @@
+
+
+/* This code is use to make all the list view header row freeze while scrolling down.
+1) Add the below code in static/src/scss/custom.scss
+2) give scss file path in menefist like this:
+  'assets': {
+        'web.assets_backend': [
+            'model_name/static/src/scss/file_name.scss'
+        ],*/
+
+.o_list_view .o_list_table thead {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.table-responsive {
+    overflow: visible;
+}
+
+.o_list_view .table-responsive .table thead {
+    z-index: 1;
+}
