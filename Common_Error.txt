@@ -7,3 +7,10 @@ OWL ERROR After Restoring DB on Local
 _________________________________________
 Sometime after restore db to localhost: It showing different OWL related error while opening or updating modules.
 Solution: First go to odoo Apps and Search Base Module and Update it. After updating base module again update the module in which you are getting error it will now update correctly.
+
+
+When migrate custom modules from old version to latest version .we get some common error like in latest odoo version tree tag is replace with list so instead of change them manually use this command:
+
+./odoo-bin upgrade_code --addons-path=custom-directory/custom_directory/custom_module_name --from 17.0
+
+ _____________________________________________
