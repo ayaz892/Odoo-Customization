@@ -14,3 +14,19 @@ When migrate custom modules from old version to latest version .we get some comm
 ./odoo-bin upgrade_code --addons-path=custom-directory/custom_directory/custom_module_name --from 17.0
 
  _____________________________________________
+
+Sometime many instances of odoo is running and causing error so here is the command to kill them:
+open terminal and run these two commands
+1) ps aux | grep odoo
+2) sudo kill -9 68636 (for example PID:68636 is running so this command will kill it)
+after running above commands restart odoo.
+_____________________________________________
+How to uninstall any module using command line
+open venv in your terminal then run this command:
+
+1) ./odoo-bin shell -c odoo.conf -d db_name   (replace with your db_name)
+
+after you will see console like this >>>>>>>>> here put this command
+2) self.env['ir.module.module'].search([('name', '=', 'your_module_name')]).button_immediate_uninstall()            (replace with your_module_name to be uninstalled)
+after it complete process just type exit() and restart odoo.
+
