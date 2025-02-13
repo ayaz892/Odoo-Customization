@@ -1,1 +1,15 @@
+TO CONNECT WITH YOUR DB ON LOCALHOST USING TERMINAL
+___________________________________
+1) Open terminal and write this command
+sudo -u postgres psql
 
+2) Add this command with your DB Name
+psql -U odoo -d your_db_name
+
+3) Write this command with your DB name again
+\c your_db_name
+
+4) It should show this message "You are now connected to database "your_db_name should be show here" as user "postgres".
+
+5) Now you can use sql commands to do operations like fetching adding values into table 
+_______________________________________________________________________________________________________________________________________________________________________
