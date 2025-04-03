@@ -13,3 +13,13 @@ psql -U odoo -d your_db_name
 
 5) Now you can use sql commands to do operations like fetching adding values into table 
 _______________________________________________________________________________________________________________________________________________________________________
+
+TO REMOVE THE LABEL SHOW WITH RED COLOR "THIS DB IS NEUTRAL".
+using this query.
+__________________________________________________________________
+UPDATE ir_ui_view 
+SET active = false 
+WHERE key = 'web.neutralize_banner';
+______________________________________________________________________________________________________________________________________________________________________
+
+ 
