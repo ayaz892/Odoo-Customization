@@ -22,4 +22,15 @@ SET active = false
 WHERE key = 'web.neutralize_banner';
 ______________________________________________________________________________________________________________________________________________________________________
 
- 
+ IF DB On local is expire how to extend its expiry date and reactive it.
+______________________________________________________________________
+
+run these command one by one on terminal
+1) sudo -u postgres psql
+2) \c your_db_name
+3) UPDATE ir_config_parameter 
+SET value = '2099-12-31' 
+WHERE key = 'database.expiration_date';
+4) \q (for exit from psql) 
+After it re login on db
+____________________________________________________________________________
