@@ -34,3 +34,17 @@ WHERE key = 'database.expiration_date';
 4) \q (for exit from psql) 
 After it re login on db
 ____________________________________________________________________________
+How to change the password for DB Backup on localhost
+____________________________________________________
+run these command one by one
+1) 1) sudo -u postgres psql
+2) \c your_db_name
+3) update res_users set password='password you want to set' where login='email of the user here';
+____________________________________________________________________________
+How to Clone, commit, pull and push to git repo
+_______________________________________________
+1) git clone here add url --branch staging --depth=1
+2) git add .
+3) git commit -m "add commit message here"
+4) git push 
+5) git pull
