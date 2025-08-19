@@ -48,3 +48,11 @@ _______________________________________________
 3) git commit -m "add commit message here"
 4) git push 
 5) git pull
+__________________________________________________
+How to Drop Database 
+____________________
+1) sudo -u postgres psql
+2) \l  (use this command to see all the available odoo Data Bases) optional command:
+3) DROP DATABASE "Your_DB_Name_here";
+________________________________________________________
+
